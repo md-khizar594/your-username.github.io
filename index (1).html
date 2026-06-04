@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Md Khizar – Personal Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --white: #ffffff;
+      --bg: #f7f5f2;
+      --card: #ffffff;
+      --ink: #1c1c1c;
+      --muted: #6b6b6b;
+      --accent: #2563eb;
+      --accent-light: #eff4ff;
+      --border: #e5e0d8;
+      --green: #16a34a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      line-height: 1.75;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.88rem;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── WRAPPER ── */
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 5rem 2rem 4rem;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      border: 3px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-text .role {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-text p {
+      color: var(--muted);
+      font-size: 0.97rem;
+      max-width: 480px;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 1rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      border: 1px solid #bfdbfe;
+    }
+
+    /* ── SECTION ── */
+    section {
+      padding: 4rem 2rem;
+    }
+
+    section + section {
+      border-top: 1px solid var(--border);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── BIODATA TABLE ── */
+    .bio-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .bio-table tr:not(:last-child) td {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .bio-table td {
+      padding: 0.9rem 1.25rem;
+      font-size: 0.93rem;
+    }
+
+    .bio-table td:first-child {
+      width: 38%;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: #fafaf8;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .edu-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .edu-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    .edu-year {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.2rem;
+    }
+
+    .edu-degree {
+      font-weight: 700;
+      font-size: 0.97rem;
+    }
+
+    .edu-inst {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* ── SKILLS ── */
+    .skills-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: 180px 1fr 40px;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .skill-label {
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .bar-bg {
+      height: 7px;
+      background: var(--bg);
+      border-radius: 99px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 99px;
+      transition: width 1.2s cubic-bezier(.22,1,.36,1);
+      width: 0%;
+    }
+
+    .bar-fill.go { /* set inline */ }
+
+    .skill-pct {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* ── ACTIVITIES ── */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .act-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.4rem;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .act-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+    }
+
+    .act-emoji {
+      font-size: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .act-title {
+      font-weight: 700;
+      font-size: 0.93rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .act-desc {
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .contact-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .contact-emoji { font-size: 1.3rem; }
+
+    .c-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 700;
+    }
+
+    .c-val { font-size: 0.88rem; font-weight: 400; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 1.75rem 2rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    footer strong { color: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .hero-text p { margin: 0 auto; }
+      .skill-row { grid-template-columns: 1fr 2fr 36px; }
+      .skill-label { font-size: 0.8rem; }
+      .nav-links { gap: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">Md Khizar</a>
+    <ul class="nav-links">
+      <li><a href="#biodata">Bio</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#activities">Activities</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-inner">
+    <div class="avatar">MK</div>
+    <div class="hero-text">
+      <div class="role">Robotics &amp; AI Student</div>
+      <h1>Md Khizar</h1>
+      <p>First-year B.E. student at JNNCE, Shivamogga, passionate about Artificial Intelligence, Robotics, and using technology for a better tomorrow.</p>
+      <span class="badge">📍 Bhadravathi, Karnataka</span>
+    </div>
+  </div>
+</div>
+
+<!-- BIODATA -->
+<section id="biodata">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-icon">👤</div>
+      <h2>Biodata</h2>
+    </div>
+    <table class="bio-table">
+      <tr><td>Full Name</td><td>Md Khizar</td></tr>
+      <tr><td>Degree</td><td>B.E. Robotics &amp; Artificial Intelligence</td></tr>
+      <tr><td>College</td><td>JNN College of Engineering (JNNCE), Shivamogga</td></tr>
+      <tr><td>Year of Study</td><td>First Year (2024 – 2025)</td></tr>
+      <tr><td>Hometown</td><td>Bhadravathi, Karnataka, India</td></tr>
+      <tr><td>Languages Known</td><td>Kannada, Hindi, English</td></tr>
+      <tr><td>Interests</td><td>Robotics, Artificial Intelligence, Programming</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-icon">🎓</div>
+      <h2>Education</h2>
+    </div>
+    <div class="edu-list">
+      <div class="edu-card">
+        <div class="edu-dot"></div>
+        <div>
+          <div class="edu-year">2024 – Present</div>
+          <div class="edu-degree">B.E. Robotics &amp; Artificial Intelligence</div>
+          <div class="edu-inst">JNN College of Engineering (JNNCE), Shivamogga</div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-dot"></div>
+        <div>
+          <div class="edu-year">Completed 2024</div>
+          <div class="edu-degree">Pre-University Course (PUC)</div>
+          <div class="edu-inst">Karnataka Pre-University Board</div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-dot"></div>
+        <div>
+          <div class="edu-year">Completed 2022</div>
+          <div class="edu-degree">SSLC – Secondary School Certificate</div>
+          <div class="edu-inst">Karnataka State Board, Bhadravathi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-icon">💻</div>
+      <h2>Skills</h2>
+    </div>
+    <div class="skills-list">
+      <div class="skill-row">
+        <div class="skill-label">🐍 Python</div>
+        <div class="bar-bg"><div class="bar-fill" data-w="80"></div></div>
+        <div class="skill-pct">80%</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">💾 C Programming</div>
+        <div class="bar-bg"><div class="bar-fill" data-w="75"></div></div>
+        <div class="skill-pct">75%</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">🤖 AI Concepts</div>
+        <div class="bar-bg"><div class="bar-fill" data-w="65"></div></div>
+        <div class="skill-pct">65%</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">🧠 Machine Learning</div>
+        <div class="bar-bg"><div class="bar-fill" data-w="60"></div></div>
+        <div class="skill-pct">60%</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">🌐 HTML &amp; CSS</div>
+        <div class="bar-bg"><div class="bar-fill" data-w="70"></div></div>
+        <div class="skill-pct">70%</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">🦾 Robotics</div>
+        <div class="bar-bg"><div class="bar-fill" data-w="55"></div></div>
+        <div class="skill-pct">55%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL ACTIVITIES -->
+<section id="activities">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-icon">🌱</div>
+      <h2>Social Activities</h2>
+    </div>
+    <div class="activities-grid">
+      <div class="act-card">
+        <div class="act-emoji">📚</div>
+        <div class="act-title">Educational Participation</div>
+        <div class="act-desc">Attending college seminars, workshops, and tech events to grow beyond the classroom.</div>
+      </div>
+      <div class="act-card">
+        <div class="act-emoji">🤝</div>
+        <div class="act-title">Helping Classmates</div>
+        <div class="act-desc">Supporting peers in understanding programming and engineering concepts.</div>
+      </div>
+      <div class="act-card">
+        <div class="act-emoji">🌱</div>
+        <div class="act-title">Community Service</div>
+        <div class="act-desc">Taking part in local community welfare activities in Bhadravathi and Shivamogga.</div>
+      </div>
+      <div class="act-card">
+        <div class="act-emoji">💡</div>
+        <div class="act-title">Tech Awareness</div>
+        <div class="act-desc">Spreading knowledge about AI and Robotics among school students and locals.</div>
+      </div>
+      <div class="act-card">
+        <div class="act-emoji">🏆</div>
+        <div class="act-title">College Events</div>
+        <div class="act-desc">Participating in fests and competitions to build teamwork and leadership skills.</div>
+      </div>
+      <div class="act-card">
+        <div class="act-emoji">🔬</div>
+        <div class="act-title">Self-Learning Projects</div>
+        <div class="act-desc">Building small Python and AI projects to apply classroom knowledge practically.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-icon">📬</div>
+      <h2>Contact</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-emoji">📧</div>
+        <div>
+          <div class="c-label">Email</div>
+          <div class="c-val">mdkhizar@gmail.com</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-emoji">📍</div>
+        <div>
+          <div class="c-label">Location</div>
+          <div class="c-val">Bhadravathi, Karnataka</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-emoji">🎓</div>
+        <div>
+          <div class="c-label">College</div>
+          <div class="c-val">JNNCE, Shivamogga</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-emoji">📱</div>
+        <div>
+          <div class="c-label">Availability</div>
+          <div class="c-val">Open to connect</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 <strong>Md Khizar</strong> · B.E. Robotics &amp; AI · JNNCE, Shivamogga
+</footer>
+
+<script>
+  // Animate skill bars when visible
+  const bars = document.querySelectorAll('.bar-fill');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const w = e.target.getAttribute('data-w');
+        e.target.style.width = w + '%';
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  bars.forEach(b => io.observe(b));
+</script>
+
+</body>
+</html>
